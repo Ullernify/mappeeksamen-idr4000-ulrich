@@ -1,0 +1,353 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+crossref: 
+  fig-title: "Figur"
+  tbl-title: "Tabell"
+---
+# Styrketrening på bein med moderat volum har større effekt på maksimal styrke og muskelmass enn lavt volum
+
+## Introduksjon
+Styrketrening er godt etablert for å være en effektiv metode for å øke maksimal styrke og muskelmasse, og det er per dags dato mange studier som kommer frem til denne konkulsjonen [@Currier2023]. Variabler slik som antall repetisjoner per sett, antall sett, treningsstatus og treningsfrekvens viser seg å ha en innvirkning på effekten av styrketrening [@ACSM2009]. Disse variablene er undersøkt med varierende resultat, da særlig spørsmålet om volum sin betydning for økning i maksimal styrke og muskelmasse.  
+
+Så hvis man ser til studier som ser på økning i maksimal styrke og muskelmasse, hvorpå få antall sett versus et moderat antall sett er sammenlignet, kan det vise seg å være manglende konsensus på feltet. I en studie gjort av [@Cannon2010] og en gjort av [@Mitchell2012], som sammenlignet ett sett mot tre sett, så man ingen forskjell i hverken maksimal styrke eller muskelmasse. På en annen side ble det gjort en meta-analyse av [@Krieger2009] som fant en større effekt på maksimal styrke ved å utføre to til tre sett mot for å bare utføre ett sett.
+
+Formålet med denne rapporten er derfor å undersøke effekten av styrketrening med lavt volum og moderat volum på maksimal styrke og muskelmasse. Min hypotese er at moderat volum gir større økning i nevnte parametre enn lavt volum.
+
+## Metode
+
+### Forsøkspersoner og studiedesign
+
+34 ikke-røykende deltakere mellom 18 - 40 år gjennomførte studien, se @tbl-participants. Ekslusjonskriteriene for deltakelse var; mer enn én styrketreningsøkt i uka siste året, begrenset kraftutvikling i muskulatur som følge av skade eller bruk av medisiner som kan påvirke effekten av trening. Alle deltakerne rapporterte at de hadde erfaring med idrettslige aktiviteter. 20 deltakere rapporterte at de var fysisk aktive ved intervensjonsstart, 10 av disse gjorde sporadisk styrketrening.
+
+Intervensjonen bestod av 12 uker med helkropps-styrketrening. Beintreningen ble utført unilateralt og hvert bein ble tilfeldig tildelt en protokoll. Det vil si at hver deltaker utførte begge protokollene. Det være seg ett sett per øvelse,lavt volum (1-sett), versus tre sett per øvelse, moderat volum (3-sett). Dette gjorde det mulig å se på forskjellen i treningsvolum innad i hver deltaker. Maksimal styrke ble målt ved baseline (pre) og etter intervensjonen (post). Kroppssammensetning ble målt før og etter intervensjonen. 
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: tbl-participants
+#| tbl-cap: "Beskrivelse av deltakere"
+
+
+library(tidyverse); library(exscidata);
+library(gt)
+
+exscidata::dxadata %>%  
+  filter(time == "pre",
+         include == "incl") %>% 
+  select(participant, sex, age, height, weight) %>% 
+  pivot_longer(names_to = "variable",
+               values_to = "value",
+               cols = age:weight) %>% 
+  summarise(.by = c(sex,variable),
+            m = mean(value),
+            s = sd(value),
+            n = n()) %>% 
+  mutate(sex = if_else(sex == "male",
+                       "Mann", "Kvinne"),
+    sex = paste0(sex, " n =", n),
+         stat= paste0(round(m,1),
+                      "(",
+                      round(s,1),
+                      ")")) %>% 
+  dplyr::select(sex,variable, stat) %>% 
+  pivot_wider(names_from = variable,
+              values_from = stat) %>% 
+  gt() %>% 
+  cols_label(sex = "Kjønn",
+             age = "Alder (år)",
+             height = "Høyde (cm)",
+             weight = "Vekt (kg)") 
+  
+
+
+
+
+
+```
+
+
+
+
+#### Treningsprotokoll
+I forkant av alle treningsøktene gjennomførte deltakerne en standardisert oppvarming. Oppvarmingen bestod av fem minutter sykling på ergometersykkel (med en opplevd anstrengelse på 13-14 på Borg' skala), etterfulgt av 10 repetisjoner i forskjellige øvelser (armhevninger, magebøyninger, rygghev og knebøy) med kroppsvekt som motstand og til slutt ett sett á 10 repetisjoner på ~50% av en repetisjon maksimum (1RM) i hver stryketreningsøvelse for bein. Øvelsene for trening av bein ble gjennomført slik: ensidig beinpress, lårcurl og lårspark, gjort med enten 1-sett eller 3-sett, avhengig av hvilket bein som ble tildelt den respektive protokollen. Videre gjennomførte deltakerne to sett med benkpress, nedtrekk og enten skulderpress eller sittende roing (de to sistnevnte øvelsene ble variert mellom økter). Hvile mellom sett var 1.5 - 3min. Treningsintensiteten økte gjennom intervensjonen, fra 10RM de to første ukene til 8RM i tre uker og 7RM de siste sju ukene. I gjennomsnitt ble 91% av utførte økter gjort med oppfølging av en fra prosjektet. Deltakere som utførte økter uten oppfølging måtte avgi rapport slik at forskerne kunne sikre en eventuelt ønsket fremgang og riktig gjennomføring i henhold til protokoll. Etter den niende treningsøkten ble det innført at en av tre ukentlige treningsøkter skulle gjennomføres med submaksimal belastning. Dette tilsvarte 90% av belastningen fra forrige økt med samme antall repetisjoner. Treningøkter gjort med maksimal innsats ble gjort med 48-timers mellomrom og treningsøkter gjort med submaksimal belastning ble gjort med minst 24-timers mellomrom fra andre økter. For å bedre kvaliteten på restiutusjonen fikk deltakerne en standardisert drikk etter hver treningsøkt med individualisert tilpasset mengde protein, fett og karbohydrater.        
+
+#### Mål på maksimal styrke og kroppssammensetning 
+Maksimal styrke ble målt som 1RM i ensidig beinpress og lårspark. Oppvarming før test ble gjennomført med 10, 6, og 3 repetisjoner på henholdsvis 50, 70 og 85% av forventet 1RM. Belastningen ble så økt helt til utførelsen ikke ble gjort i henhold til øvelsens bevegelsesbane. 1RM ble fastsatt på høyest mulig belastning gjort riktig i henhold til øvelsens bevegelsesbane. Deltakerne fikk fire til seks forsøk.
+Maksimal styrke ble testet to ganger pre intervensjon med minst fire dagers mellomrom. Høyeste 1RM fra beinpress ble brukt i senere analyse. Både pre- og post-test ble gjort med minst 48timers mellomrom før neste eller fra siste treningsøkt.
+
+Kroppssammensetning (muskelmasse) ble målt ved bruk av dual-energy X-ray absorptiometry (DXA) (Lunar Prodigy, GE Healthcare, Oslo, Norway) i henhold til standard protokoll. I forkant av DXA-skanning ble deltakerne bedt om å møte fastende (to timer i forkant) og å avstå fra moderat til hard fysisk aktivitet 48 timer før skann. 
+
+### Dataanalyse og statistikk
+Alle deskriptive data er presentert som gjennomsnitt og standardavvik (gjennomsnitt (SA)). 
+For å undersøke effekten av 1-sett versus 3-sett på maksimal styrke (beinpress) og fettfri masse ble det utført en paret t-test. Dette fordi denne statistiske testen egner seg til å måle forskjeller innad i samme individ over tid (pre - post) [@Cohen1988]. Tallene i resultatdelen viser gjennomsnittlig forskjell mellom protokollene med tilhørende konfidensintervall (CI), p-verdi og t-verdi. Signifikansnivå ble satt til p < 0.05.       
+Den statistiske analysen ble gjort i R [@RCoreTeam2021].
+
+## Resultater
+```{r}
+#| label: "Load packages and data"
+#| warning: false
+#| message: false
+#| echo: false
+#| output: false
+
+
+library(exscidata)
+data("dxadata"); data("strengthvolume")
+library(tidyverse); library(exscidata)
+library(lme4)
+library(ggplot2)
+
+
+## Import data set, extract leg lean mass per leg and remove observations
+# that are include == "excl".
+
+leanmass <- dxadata %>%
+  select(participant:include, lean.left_leg, lean.right_leg) %>%
+  pivot_longer(names_to = "leg", 
+               values_to = "lean.mass", 
+               cols = lean.left_leg:lean.right_leg) %>%
+  mutate(leg = if_else(leg == "lean.left_leg", "L", "R"), 
+         sets = if_else(multiple == leg, "multiple", "single")) %>%
+  select(participant, time, sex, include, sets, leg, lean.mass) %>%
+  filter(include == "incl") %>%
+  
+  ## Change levels for time and sets
+  mutate(time = factor(time, levels = c("pre", "post")), 
+         sets = factor(sets, levels = c("single", "multiple")), 
+         leg = paste0(participant, leg))
+  
+
+
+
+# Create a wide data set of change scores per volume condition
+# suitable for a t-test
+leanmass_change_wide <- leanmass %>%
+  pivot_wider(names_from = time, values_from = lean.mass) %>%
+  mutate(change = post - pre) %>%
+  
+  select(participant, sex, sets, change) %>%
+  pivot_wider(names_from = sets, 
+              values_from = change) %>%
+  
+  mutate(diff = multiple - single)
+  
+ 
+
+
+## Do a t-test on change scores per condition. 
+
+## Alternatives (paired, equal variation)
+t_results <- with(leanmass_change_wide, t.test(multiple, single, paired = TRUE))
+
+#####
+## write up the t-test
+
+pval <- round(t_results$p.value,3)
+
+tval <- round(t_results$statistic,2)
+
+df <- t_results$parameter
+
+cil <- round(t_results$conf.int[1],1)
+ciu <- sprintf("%.1f", round(t_results$conf.int[2],1))
+
+
+estimate <- round(t_results$estimate,1)
+
+
+lean.mass.results <- paste0(estimate,
+                            " (95 CI: [",
+                            cil,
+                            ",",
+                            ciu, 
+                            "], *P*-value = ",
+                            pval,
+                            ", t<sub>",
+                            df, "</sub> = ",
+                            tval,")")
+
+
+```
+### Muskelmasse
+Etter 12 ukers styrketrening viste analysene at det var en gjennomsnittlig forskjell i muskelmasse i gram mellom protokollene 1-sett versus 3-sett på `r lean.mass.results` pre til post. For å se forskjellen mellom protokllene for hver deltaker, se @fig-muskelmasse.
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| label: fig-muskelmasse
+
+leanmass_plot <- leanmass_change_wide %>% 
+  pivot_longer(names_to = "sett",
+               values_to = "Muskelmasse (g)",
+               cols = multiple:single) %>% 
+  mutate(sett= factor(sett, levels =
+                        c("single", 
+                          "multiple")),
+         sett = recode(sett, "single" = "1-sett", "multiple" = "3-sett")) %>% 
+  ggplot(aes(sett, `Muskelmasse (g)`,
+             group = participant,
+             color = sex)) +
+  geom_line()+
+  geom_point()+
+  labs(x = "Sett",
+       color = "Kjønn",
+       caption = "Figuren viser forskjell i muskelmasse mellom protokollene fra pre til post.") +
+       scale_color_manual(
+         values = c("male" = "navy", "female" = "red"),
+         labels = c("male" = "Mann", "female" = "Kvinne"))
+  
+
+
+
+leanmass_plot
+  
+  
+
+
+```
+
+
+### Maksimal styrke
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+
+
+## Exploratory plot of strength data 
+
+str <- strengthvolume %>%
+  filter(include == "incl") %>%
+  mutate(time = factor(time, levels = c("pre", "session1", 
+                                        "week2", "week5", 
+                                        "week9", "post"))) 
+  
+## Use pre and post data 
+# Combine pre data prior to data analysis
+# per exercise, leg, participant, and sets
+
+str_pre_post <- str %>%
+  mutate(time = if_else(time %in% c("pre", "session1"), "pre", time)) %>%
+  
+  filter(time %in% c("pre", "post"))%>%
+  
+  summarise(load = max(load, na.rm = TRUE), 
+            .by = c(participant, 
+                    sex, 
+                    time, 
+                    sets,
+                    exercise,
+                    leg)) %>%
+  filter_all(all_vars(!is.infinite(.))) 
+ 
+  
+ 
+str_change <- str_pre_post %>% 
+ pivot_wider(names_from = time, values_from = load) %>%
+  mutate(change = post - pre) %>%
+  
+  select(participant, sex, sets,exercise, change) %>%
+  pivot_wider(names_from = sets, 
+              values_from = change) %>%
+  
+  mutate(diff = multiple - single) 
+  
+
+
+str_tst <-str_change %>% 
+  filter(exercise == "legpress") %>% 
+  select(participant, sex, single, multiple, diff)
+
+
+
+t_test_str <- t.test(str_tst$multiple, str_tst$single, paired = TRUE)
+
+pval2 <- round(t_test_str$p.value,3)
+
+tval2 <- round(t_test_str$statistic,2)
+
+df2 <- t_test_str$parameter
+
+cil2 <- round(t_test_str$conf.int[1],1)
+ciu2 <- sprintf("%.1f", round(t_test_str$conf.int[2],1))
+
+
+estimate2 <- round(t_test_str$estimate,1)
+
+
+str.results <- paste0(estimate2,
+                            " (95 CI: [",
+                            cil2,
+                            ",",
+                            ciu2, 
+                            "], *P*-value = ",
+                            pval2,
+                            ", t<sub>",
+                            df2, "</sub> = ",
+                            tval2,")")
+
+
+
+```
+Resultatene viste også en gjennomsnittlig forskjell i maksstyrke i kilogram mellom protokollene 1-sett versus 3-sett på `r str.results` post til pre. For å se forskjellen mellom protokllene for hver deltaker, se @fig-maksstyrke.
+
+
+
+```{r}
+#| warning: false
+#| message: false
+#| echo: false
+#| label: fig-maksstyrke
+
+  str_plot <- str_tst %>% 
+  pivot_longer(names_to = "sett",
+               values_to = "Maksimal styrke (kg)",
+               cols = multiple:single) %>% 
+  mutate(sett= factor(sett, levels =
+                        c("single", 
+                          "multiple")),
+         sett = recode(sett, "single" = "1-sett", "multiple" = "3-sett")) %>% 
+  ggplot(aes(sett, `Maksimal styrke (kg)`,
+             group = participant,
+             color = sex)) +
+  geom_line()+
+  geom_point()+
+  labs(x = "Sett",
+       color = "Kjønn",
+       caption = "Figuren viser forskjell i maksimal styrke i beinpress mellom protokollene fra pre til post.") +
+       scale_color_manual(
+         values = c("male" = "navy", "female" = "red"),
+         labels = c("male" = "Mann", "female" = "Kvinne"))
+
+str_plot
+
+```
+
+
+## Diskusjon
+Denne studien viser at 3-sett med styrketrening på bein gir større økning i maksimal styrke og muskelmasse sammenlignet med 1-sett. Dette støtter min hypotese om at moderat volum gir større økning i maksimal styrke og muskelmasse enn lavt volum.
+
+Tidligere forskning har som nevnt vist seg å være sprikende i sine resultater. [@Cannon2010] og [@Mitchell2012] fant ingen forskjell mellom ett sett og tre sett når det gjaldt økning i styrke eller muskelmasse. Men i meta-analyser gjort av [@Krieger2009] og [@Schoenfeld2017] viser det seg at flere sett er bedre enn ett. Denne studien støtter meta-analysene og tilsier at et moderat treningsvolum kan være mer effektivt enn lavt volum for styrke og muskelvekst. Dette kan være til nytte for nybegynnere og folk som trener sporadisk styrketrening.
+
+Denne studien sitt design skiller seg fra tidligere studier og styrker funnene. Ved å tildele begge styrketreningsprotokollene til samme individ reduseres individforskjellene [@Senn2002]. Dette betyr at man i større grad kan peke på effekten av treningsvolumet som begrunnelse for økning i styrke og muskelvekst og ikke personlige variabler som; personlig genetikk, kosthold eller treningsstatus. I tillegg ble 91% av øktene utført med oppfølging noe som reduserer risikoen for feil utførelse, og som gir lik kvalitet på treningen.
+
+Samlet sett støtter funnene i denne studien hypotesen om at et moderat treningsvolum  gir større økning i maksimal styrke og muskelmasse sammenlignet med et lavt volum. Dette kan ha praktisk betydning for å optimalisere treningsprogrammer, særlig for individer med lite erfaring i styrketrening. Likevel peker variasjonen i forskningsresultater på behovet for ytterligere forskning for å få klarhet i hvordan treningsvolum kan optimaliseres for ulike målgrupper og treningsmål.
+
+
+
+
+
+
+
+
+
+
+
+
+

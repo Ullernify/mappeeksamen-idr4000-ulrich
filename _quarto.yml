@@ -1,0 +1,23 @@
+project: 
+  type: book 
+  render: 
+    - "*.qmd"
+    - "!devel/"
+book:
+  title: "Mappeeksamen IDR4000"
+  author: "Ulrich"
+  date: "2024-11-05"
+  chapters:
+  - index.qmd
+  - 03-statistisk-inferens.qmd 
+  - 05-rapport.qmd
+  - kilder.qmd 
+bibliography: 
+ - resources/references.bib
+ - resources/ref2bib.bib
+csl: resources/citation-style.csl
+format:
+  html:
+    theme: cosmo 
+  pdf: 
+    documentclass: scrreprt

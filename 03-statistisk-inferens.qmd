@@ -1,0 +1,5 @@
+---
+title: Statistisk inferens
+---
+
+legg til tekst[@zeigler2018]
