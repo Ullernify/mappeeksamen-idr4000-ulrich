@@ -1,11 +1,8 @@
 # Forord {.unnumbered} 
-Tusen takk til Lone, Lars og Daniel for svært godt samarbeid! Lone, du har vært en ekte helt på ImageJ, takk for det. Lars du guidet oss trygt gjennom $\dot{V}O_{2max}$-testene i testlabben, takk for det. Og takk til Daniel for artige, frustrerte ansiktsuttrykk på snap, R er ingen leik!
 
-Takk til Ole og Eskil for veiledning med kod.
+For å etterprøve mine funn kan all kode og data hentes her: 
 
-Til slutt rettes en takk til Jens Konrad Daniel Hammarström, for eminent undervisning i emnet.
 
-Dennne oppgaven hadde ikke vært mulig å fått til uten de nevnte.
 
 
 
