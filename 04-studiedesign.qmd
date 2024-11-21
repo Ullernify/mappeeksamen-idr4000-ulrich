@@ -1,0 +1,57 @@
+---
+title: "Studiedesign"
+---
+
+
+
+Hensikten med denne rapporten er å sammenligne fem studier sine studiedesign og metoder for statistisk analyse. 
+
+## Introduksjon
+
+I dagens idrettsvitenskapelige forskningsfelt spiller studiedesign og statistiske modeller en sentral rolle for innhenting og analyse av data. Statistisk analyse blir ofte brukt som et forsøk på å trekke meningsfulle konkulsjoner fra en mengde innsamlede data. Dette være seg til hypotesetesting, forutsi fremtidige utfall eller avdekke årsakssammenhenger. Statistiske modeller kan være svært komplekse, noe som kan gjøre det vanskelig for forskere å vurdere hvilke analyser som egner seg best til sine innsamlede data [@Atkinson]. Hvilke statistiske modeller som skal bli brukt på innsamled data burde derfor ses i sammenheng med studiedesign [@Hulley]. 
+
+Et studiedesign er strukturen til en studie, en beskrivelse av studiens gjennomføring og alle aspekter av datainnsamlingen [@Knight]. Studier har derfor forskjellig struktur for å best fange opp den aktuelle forskningens formål [@Creswell]. I studier hvor formålet er å undersøke fysiologiske responser på trening brukes ofte et randomisert-kontrollert studiedesign (RCT) da dette blir sett på som gullstandarden innen idrettsvitenskap [@Bouchard]. Dette vil si at forsøkspersonene fordeles tilfeldig i en eksperimentell gruppe som får en behandling, her som blokkperiodisering av trening (BP) og en kontroll-gruppe som ikke får behandling, eventuelt en behandling til sammenligning, her som tradisjonell trening (TRAD) [@Hulley]. RCT-designet balanserer deltakernes egenskaper  mellom gruppene gjennom randomisering, noe som er med på å gjøre det mulig å tilskrive eventuelle forskjeller i utfall til intervensjonen som studeres [@Hariton2018].         
+
+
+## Metode
+
+Analysene bygger på QUALMRI-metoden [@Brosowsky] og tar for seg fem studier som undersøker effekten av blokkperiodisering på utholdenhetstrening med et kriterium om at den fysiologiske variabelen VO2max er blitt målt. Analysen har fokusert på likheter, ulikheter, styrker og svakheter ved studienes design og bruk av statistiske modeller.
+Dette er studiene som er analysert;
+
+- "5-week block periodization increases aerobic power in elite cross-country skiers" [@Rønnestad2016]
+- "Block periodization of high-intensity aerobic intervals provides superior training effects in trained cyclists" [@Rønnestad2014]
+- "Block periodization in alpine skiing: effects of 11-day HIT on V&#775;O<sub>2max</sub> and performance" [@Breil]
+- "Effect of 12 weeks block periodization on performance and performance indices in well-trained cyclist" [@Rønnestad12weeks]
+- "Performance changes in world-class kayakers following two different training periodization models" [@Garcia]
+
+ 
+
+## Resultat
+
+Alle studiene indikerer at BP gir større økning i V&#775;O<sub>2max</sub> enn TRAD. Analysen viser til en gjennomgående bruk av RCT, med én overkryssningsstudie [@Garcia], som studiedesign med et utvalg på 10 - 20 forsøkspersoner totalt. Utvalget varierte fra godt trente til utøvere i verdensklasse. Videre ble det gjennomført pre- og post-intervensjonstesting av både fysiologiske variabler og variabler som mål på prestasjon. Studiene varierte med intervensjoner som pågikk fra 11 dager - 2 år. 
+
+Studiene benyttet seg av variansanalyser (ANOVA og t-test) for å måle forskjeller over tid mellom grupper. Én studie brukte kovariansanalyse (ANCOVA) og kun èn viste til statistisk styrkeberegning.   
+
+## Diskusjon
+
+### Studiedesign og valg av metode
+I idrettsvitenskap anses et RCT-design som gullstandarden. Ved å bruke RCT-design, som de analyserte studiene gjør, skapes et godt grunnlag for å kontrollere for eksterne faktorer. Dette igjen øker sannsynligheten for at resultatene kan forklares på bakgrunn av intervensjonen. En av de inkluderte studiene benytter en overkryssningsstudie. Dette muliggjør sammenligning av to ulike treningsformer innad i samme individ, men kan være utfordrende med tanke på "carryover"-effekter  – det vil si at effektene fra den første perioden påvirker resultatene i den andre perioden [@Senn].
+
+Hva gjelder utvalg er det fordeler og ulemper ved bruk av eliteutøvere og utøvere i verdensklasse. På den ene siden gir eliteutøvere et høyt prestasjonsnivå noe som gjør det enklere å observere mindre, men meningsfulle forandringer i målte variabler [@Hopkins]. På en annen side er utvalgsstørrelsen liten, noe som kan begrense studiens evne til å generalisere samt påvirke den statistisk styrken [@Spiegelhalter].
+
+### Statistiske modeller
+I den statistisk analysen av dataene benyttes variansanalyse (ANOVA og t-test) i de fleste studiene. Disse analysemetodene er gode for å undersøke forskjeller over tid mellom grupper. Dette er også passende modeller for gjentatte målinger hvor forskerne ønsker å sammenligne en gruppe med seg selv og med en kontrollgruppe. En av studiene benytter ANCOVA. Denne kovariansanalysen justerer for variasjoner i pre-intervensjonsverdier (regression to the mean) og kan potensielt sett gi et bedre bilde av BP sin effekt. At kun én studie rapporterer statistisk styrke er en betydelig svakhet da dette begrenser forståelsen av eksperimentets pålitelighet [@Spiegelhalter].
+
+Statistisk styrke er særlig relevant da små utvalg øker risikoen for type II-feil (falske negative). Altså at man ikke finner en effekt der en effekt faktisk eksisterer[@Spiegelhalter].  Den lave bruken av beregning av statistisk styrke gjør det utfordrende å konkludere med at BP faktisk er signifikant bedre enn TRAD. En anbefaling, slik jeg ser det, vil være å inkludere beregning av statistisk styrke som en del av metoden i idrettsvitenskapelige studier. 
+
+### Varighet og oppfølging
+Treningsintervensjonene i studiene varierer alt fra 11 dager til 2 år. Dette gir et variert bilde av BP sin effekt på kort og lang sikt. Variasjonen i intervensjonslengde gjør det mulig å sammenligne kortsiktige og langsiktige responser, men det kan også føre til utfordringer i hvordan vi tolker resultatene. Studier med lengre varighet kan for eksempel vise effekter som utvikles over tid, men det kan da være vanskeligere å kontrollere for de potensielt eksterne faktorene som påvirker utviklingen utover intervensjonen [@Bacon].
+
+### Konklusjon
+Samlet sett peker analysen mot at BP har større effekt på V&#775;O<sub>2max</sub> enn TRAD i de aktuelle studiene, men svakheter som små utvalg og mangel på statistisk styrke begrenser grunnlaget for å kunne gi noen generelle anbefalinger. For fremtidig forskning anbefales det å fokusere på metodologiske forbedringer, som å øke størrelsen på utvalget, gjøre flere longitudinelle studier med bedre standradisering og oppfølging. Hva gjelder statistikk vil implementering av styrkeberegning og standardiserte analyser øke studienes kredibilitet. Disse anbefalingene vil trolig gi et mer virklighetsnært bilde av BP sin effekt på V&#775;O<sub>2max</sub>.
+
+
+
+
+
+

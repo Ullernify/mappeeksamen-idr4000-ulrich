@@ -1,0 +1,399 @@
+---
+title: "Labrapport"
+editor_options: 
+  chunk_output_type: console
+
+---
+
+
+
+## Introduksjon
+
+Analyse av genuttrykk gjennom fluorescensbasert sanntids kvantitativ polymerasekjedereaksjon (qPCR) er en velkjent metode som brukes i en rekke treningsstudier [@Kuang]. Denne metoden kvantifiserer uttrykket av målgener i biologiske prøver, som for eksempel fra blod eller muskelvev. qPCR-analyse er bredt anvendt, og det finnes en rekke protokoller og metoder for å gjennomføre analysen. I vår studie brukte vi SYBR Green-metoden, der et fluorescerende fargestoff binder seg til DNA under amplifikasjon. Denne fluorescensen gjør det mulig å følge reaksjonen i sanntid, ettersom signalintensiteten korrelerer med mengden DNA som er til stede [@Kuang]. Fluorescensen når en forhåndsbestemt terskel, kjent som syklusterskelen (CT), som reflekterer nivået av genuttrykk. En lavere CT-verdi indikerer høyere genuttrykk, siden færre amplifikasjonssykluser er nødvendig for å nå terskelen [@Livak].
+
+Innen treningsfysiologi brukes qPCR ofte for å undersøke endringer i genuttrykk som oppstår ved trening. I denne studien har vi som mål å teste primer-effektivitet og utføre målrettet amplifikasjon av cDNA ved bruk av spesifikke primere. I tillegg ønsker vi å undersøke hvordan styrketrening påvirker genuttrykket i ulike muskelfibertyper hos deltakere som gjennomførte et to ukers styrketreningsprogram. De ulike muskelfibertypene vi undersøkte var type I, type IIa og type IIx. Type I-fibre er kjent som langsomme muskelfibre og er svært oksidative og kan opprettholde kontraksjoner over lange perioder uten å bli slitne, mens type IIa- og type IIx-fibre har dårligere utholdende 
+egenskaper, men kan produsere mer kraft over en kortere tidsperiode [@Pette2000].
+
+\newpage 
+
+## Metode
+
+### Materialer
+
+- En sanntids PCR-maskin (QuantStudio 5)  
+- En qPCR-reaksjonsplate  
+- Nukleasefritt vann og pipettespisser  
+- SYBR-green Master Mix  
+
+Før eksperimentet forberedte laboratorielederen cDNA, som ble ekstrahert fra prøver samlet inn i en studie der deltakerne gjennomgikk et to ukers styrketreningsprogram.
+
+Først opprettet vi en fortynningsserie for å teste primerne (@tbl-dilution). Vi flyttet 2 µl fra rør 1 til rør 2a, og 10 µl fra rør 1 til 2b, deretter vortexet vi rør 2a og 2b for å blande prøven og vannet (H₂O). Neste steg var å flytte 2 µl fra 2a til 3a og 2 µl fra 2b til 3b, og deretter vortexe rør 3a og 3b. Til slutt flyttet vi 2 µl fra 3a til 4a og 2 µl fra 3b til 4b og vortexet rør 4a og 4b.
+
+
+
+
+  
+
+```{r} 
+#| message: false
+#| warning: false
+#| label: "tbl-dilution" 
+#| echo: false
+#| tbl-cap: "Fortynningsserie" 
+
+ 
+
+library(gt) 
+library(dplyr)
+library(tidyverse) 
+library(knitr)
+ 
+
+table_data <- data.frame( 
+
+  row.names = c("Fortynning", "prøve", "H2O"), 
+
+  `1` = c("1", "30µl", "0µl"), 
+
+  `2a` = c("1/10", "2µl", "18µl"), 
+
+  `3a` = c("1/100", "2µl", "18µl"), 
+
+  `4a` = c("1/1000", "2µl", "18µl"), 
+
+  `2b` = c("1/2", "10µl", "10µl"), 
+
+  `3b` = c("1/20", "2µl", "18µl"), 
+
+  `4b` = c("1/200", "2µl", "18µl") 
+
+) 
+
+ 
+ 
+
+colnames(table_data) <- c("1", "2a", "3a", "4a", "2b", "3b", "4b") 
+
+ 
+
+
+table_data %>%  kable()
+
+ 
+
+ 
+
+``` 
+
+
+
+Vi laget deretter en master mix som besto av 250 µl SYBR-green, 50 µl primermikstur (MHC1, MHC2a, MHC2x, eller MHCb2m), og 100 µl H₂O. Deretter fylte vi platen med primerspesifikk master mix i henhold til pipetteringsskjemaet vårt (@tbl-pipette). 8 µl av master mix ble tilsatt i brønnene sammen med 2 µl cDNA-prøve.
+
+
+
+
+```{r} 
+#| message: false
+#| warning: false
+#| label: "tbl-pipette"  
+#| echo: FALSE
+#| tbl-cap: "Pipetteringsskjema"  
+
+ 
+
+library(tidyverse) 
+library(knitr)
+library(kableExtra)
+
+ 
+
+table_data1 <- data.frame( 
+
+  Row = c(NA, "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"), 
+
+  "13" = c("Fp1", "myhc 1", "myhc 1", "myhc 1", "myhc 2a", "myhc 2a", "myhc 2a", "myhc 2x", "myhc 2x", "myhc 2x", "myhc", "myhc", "myhc"), 
+
+  "14" = c("Fp2", "myhc 1", "myhc 1", "myhc 1", "myhc 2a", "myhc 2a", "myhc 2a", "myhc 2x", "myhc 2x", "myhc 2x", "myhc", "myhc", "myhc"), 
+
+  "15" = rep(NA, 13), 
+
+  "16" = rep(NA, 13), 
+
+  "17" = c(NA, "cmyc 1", "cmyc 1", "cmyc 1", NA, NA, NA, NA, NA, NA, "cmyc 1", "cmyc 1", "cmyc 1"), 
+
+  "18" = c(NA, "cmyc 2a", "cmyc 2a", "cmyc 2a", NA, NA, NA, NA, NA, NA, "cmyc 2a", "cmyc 2a", "cmyc 2a"), 
+
+  "19" = c(NA, "cmyc 3a", "cmyc 3a", "cmyc 3a", NA, NA, NA, NA, NA, NA, "cmyc 3a", "cmyc 3a", "cmyc 3a"), 
+
+  "20" = c(NA, "cmyc 4a", "cmyc 4a", "cmyc 4a", NA, NA, NA, NA, NA, NA, "cmyc 4a", "cmyc 4a", "cmyc 4a"), 
+
+  "21" = c(NA, "cmyc 2b", "cmyc 2b", "cmyc 2b", NA, NA, NA, NA, NA, NA, "cmyc 2b", "cmyc 2b", "cmyc 2b"), 
+
+  "22" = c(NA, "cmyc 3b", "cmyc 3b", "cmyc 3b", NA, NA, NA, NA, NA, NA, "cmyc 3b", "cmyc 3b", "cmyc 3b"), 
+
+  "23" = c(NA, "cmyc 4b", "cmyc 4b", "cmyc 4b", NA, NA, NA, NA, NA, NA, "cmyc 4b", "cmyc 4b", "cmyc 4b") 
+
+)  
+
+ 
+
+colnames(table_data1) <- c("row", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23")  
+
+ 
+
+table_data1[is.na(table_data1)] <- "" 
+
+ 
+
+table_data1 %>% kable() %>% 
+  kable_styling(latex_options = c("scale_down"), font_size = 7)
+
+ 
+
+ 
+
+ 
+
+``` 
+
+Platen ble deretter dekket med plast og sentrifugert ved 1200 o/min i 1 minutt. PCR-prøvene ble analysert ved hjelp av real-time PCR (Applied Biosystems 7500 Fast Real-Time PCR System, Life Technologies AS) og QuantStudio-programvare (Applied Biosystems, Waltham, MA, USA). PCR-prosessen besto av tre stadier: en "Hold-stadie," en "PCR-stadie" og en "Melt curve-stadie."
+
+I det første trinnet økte temperaturen med 1,99 °C/s opp til 50 °C, hvor den ble holdt konstant i 2 minutter. Deretter økte temperaturen med 1,99 °C/s opp til 95 °C, hvor den forble konstant i 2 minutter. Deretter startet selve PCR-prosessen, som besto av 40 sykluser. Én syklus innebar 1 sekund ved 95 °C, etterfulgt av at temperaturen sank med en hastighet på 1,77 °C/s til 60 °C, hvor den ble holdt konstant i 30 sekunder. Etter hver syklus ble et bilde av fluorescensen i brønnene tatt.
+
+Til slutt økte temperaturen med 1,99 °C/s opp til 95 °C og ble holdt konstant i 15 sekunder. Deretter sank temperaturen med en hastighet på 1,77 °C/s til 60 °C, hvor den ble holdt konstant i 1 minutt. Temperaturen økte så med en hastighet på 0,15 °C/s opp til 95 °C, hvor den ble holdt konstant i 15 sekunder. Etter at PCR-prosessen var fullført, hentet vi ut resultatene i form av CT-verdier.
+
+### Statistisk analyse
+Analysen av dataen ble gjort i Excel [@msexcel] . Her beregnet vi gjennomsnittlig CT-verdi for triplikatene, samt base-10-logaritmen av prøvemengden. Deretter ble stigningen beregnet ved å plotte log(prøvemengde) mot gjennomsnittlig CT-verdi. En lineær regresjon ble utført for å finne den best tilpassede linjen. Primer-effektiviteten ble deretter beregnet ut fra stigningen. Til slutt beregnet vi standardavviket (SD) og variasjonskoeffisienten (CV) mellom replikatene.
+
+## Resultater
+
+### Primereffektivitet
+```{r} 
+#| message: false
+#| echo: false
+#| warning: false
+#| label: "tbl-primer"  
+#| tbl-cap: "Primereffektivitet" 
+
+ 
+
+table_data2 <- data.frame( 
+
+  Dilution = c("1", "1/2", "1/10", "1/20", "1/200"), 
+
+  Ct1 = c(28.678, 29.414, 31.776, 33.241, "Undetermined"), 
+
+  Ct2 = c(28.708, 29.620, 31.416, 32.653, "Undetermined"), 
+
+  Ct3 = c(29.155, 29.264, 32.413, "Undetermined", 34.574), 
+
+  `Avg Ct` = c(28.847, 29.433, 31.868, 32.947, 34.574), 
+
+  `Sample quan` = c(1, 0.5, 0.1, 0.05, 0.005), 
+
+  `Log \n(sample quan)` = c(0, -0.301, -1, -1.301, -2.301), 
+
+  `Slope` = c(-2.6104, NA, NA, NA, NA), 
+
+  `Primer Efficiency (%)` = c(141.5901, NA, NA, NA, NA)) 
+
+ 
+
+table_data2[is.na(table_data2)] <- "" 
+
+ 
+
+ 
+
+table_data2 %>% kable() %>% 
+  kable_styling(latex_options = c("scale_down"), font_size = 7)
+ 
+
+``` 
+
+
+En stigning på -2,6 indikerer at primereffektiviteten ikke er optimal, beregnet til å være 142 %. Observasjonen er ikke lineær (@tbl-primer).
+
+
+```{r} 
+#| message: false
+#| warning: false
+#| label: "tbl-x1" 
+#| echo: FALSE
+#| tbl-cap: "Gjennomsnitt og variasjon" 
+
+ 
+
+library(tidyverse) 
+
+library(gt) 
+
+ 
+
+ 
+
+pooled_data <- data.frame( 
+
+  `Samlet prøve` = c(1, 0.5, 0.1), 
+
+  Avg = c(28.847, 29.433, 31.868), 
+
+  SD = c(0.26704902, 0.17887641, 0.50500096), 
+
+  `CV` = c("0.93 %", "0.61 %", "1.58 %")) 
+
+ 
+
+ 
+
+pooled_data %>%  
+
+  kable()
+
+ 
+
+``` 
+
+De lave verdiene for standardavvik (SD) indikerer at målingene for de ulike fortynningene i den "samlede prøven" er konsistente og presise. Variasjonskoeffisienten (CV) viser at den 1/2-fortynnede prøven har den laveste variasjonen (0,61 %), mens den 1/10-fortynnede prøven har den høyeste variasjonen (1,58 %). Dette tyder på at målingene blir mindre presise ved høyere fortynning, se @tbl-x1. 
+
+
+```{r} 
+#| message: false
+#| warning: false
+#| echo: False  
+
+library(ggplot2) 
+
+ 
+
+data <- data.frame( 
+
+  Fortynning = c("1", "1/2", "1/10", "1/20", "1/200"), 
+
+  Avg_Ct = c(28.847, 29.433, 31.868, 32.947, 34.574), 
+
+  Log_sample_quan = c(0, -0.301, -1, -1.301, -2.301)) 
+
+ 
+
+ggplot(data, aes(x = Avg_Ct, y = Log_sample_quan, color = Fortynning)) + 
+
+  geom_point(size = 2) +   
+
+  geom_smooth(method = "lm", se = FALSE, color = "black", linewidth = 0.5, linetype = "dotted") +   
+
+  labs( 
+    caption = " Figuren viser et lineært forholde mellom fortynning av prøver
+    og syklusterskel. Fargede punkter er prøvenes fortynningsgrad. 
+    Svart stipled linje er en lineær regresjon tilpasset dataen. ",
+    
+    x = "Gjennomsnitt CT", 
+
+    y = "Log(prøvemengde)") + 
+
+  theme_minimal() + 
+
+  scale_color_manual(values = c("royalblue3", "paleturquoise", "palegreen2", "wheat4", "pink")) + 
+
+  theme(legend.title = element_blank()) 
+
+ 
+
+ 
+
+``` 
+
+
+## Myosin Heavy Chain  
+
+I @tbl-ct ser vi at antall sykluser for å nå syklusterskelen (CT) har endret seg fra uke 0 til uke 2. For myhc1 gikk gjennomsnittet fra 19,7 til 19,3 sykluser. For myhc2a gikk det fra 20,9 til 19,4, og for myhc2x gikk det fra 26,6 til 24,4 sykluser. Dette indikerer at genuttrykket økte fra uke 0 til uke 2, da færre sykluser indikerer høyere genuttrykk [@Livak].
+
+
+```{r} 
+#| warning: false 
+#| message: false
+#| label: "tbl-ct" 
+#| echo: false 
+#| tbl-cap: "CT-verdier" 
+
+ 
+
+table_data4 <- data.frame( 
+
+  ID = c("FP6 R w0", "FP6 R w2pre", "FP6 R w0", "FP6 R w2pre", "FP6 R w0", "FP6 R w2pre"), 
+
+  Target_name = c("myhc1", "myhc1", "mhc2a", "mhc2a", "myhc2x", "myhc2x"), 
+
+  ct1 = c(19.798, 18.944, 21.029, 19.549, 27.019, 24.871), 
+
+  ct2 = c(19.901, 19.240, 21.247, 19.304, 26.898, 24.105), 
+
+  ct3 = c(19.621, 19.861, 20.627, 19.580, 25.907, 24.256), 
+
+  Snitt = c(19.7733333, 19.3483333, 20.968, 19.478, 26.6079534, 24.4106166), 
+
+  Ref.gen = c("b2m", "b2m", "b2m", "b2m", "b2m", "b2m"), 
+
+  Ref.ct1 = c(24.670, 22.913, 24.670, 22.913, 24.670, 22.913), 
+
+  Ref.ct2 = c(24.513, 23.950, 24.513, 23.950, 24.513, 23.950), 
+
+  Ref.ct3 = c(24.691, 23.819, 24.691, 23.819, 24.691, 23.819), 
+
+  Ref.snitt = c(24.625, 23.561, 24.625, 23.561, 24.625, 23.561), 
+
+  Delta.ct = c(-4.851, -4.212, -3.657, -4.083, 1.983, 0.850), 
+
+  Two.delta.delta.ct = c(28.867, 18.536, 12.613, 16.944, 0.253, 0.555)) 
+
+ 
+
+ 
+
+table_data4 %>% kable() %>% 
+  kable_styling(latex_options = c("scale_down"), font_size = 5)
+
+ 
+
+``` 
+
+I @tbl-x2 ser vi at mengden genuttrykk for ulike muskelfibertyper har endret seg fra uke 0 til uke 2. Uttrykket av Muskelfibertype 1 (myhc1) sank fra 69 % til 51 %, mens Muskelfibertype 2a (myhc2a) økte fra 30 % til 47 %. Muskelfibertype 2x (myhc2x) økte fra 0,6 % til 1,5 %.  
+
+```{r} 
+#| message: false
+#| label: "tbl-x2" 
+#| echo: false 
+#| tbl-cap: "Prosentvis fordeling av genuttrykk etter uke 0 og uke 2" 
+
+ 
+
+table_data3 <- data.frame( 
+
+  `100%` = c(41.733, 36.034), 
+
+  myhc1 = c("69.17 %", "51.44 %"), 
+
+  myhc2a = c("30.22 %", "47.02 %"), 
+
+  mhc2x = c("0.61 %", "1.54 %")) 
+
+ 
+
+colnames(table_data3) <- c("100%", "myhc1", "myhc2a", "myhc2x")  
+
+ 
+
+table_data3 %>% gt() 
+
+ 
+```
+
+
+## Diskusjon
+I en studie [@Wilborn] fant man at etter 8 uker med tung styrketrening var genuttrykket for myhc 1 og 2a økt, men noe mindre for myhc 2x. Det er ikke studier på to uker med stykretrening som forklarer endringen i myhc genuttrykk, men vi spekulerer i at det vil være samme endringer som for [@Wilborn], dog i mindre grad. Dette stemmer med våre funn da vi ser en økning i genutrykk for både myhc 1 og myhc 2a, men vi har også motstridene resultat. Vi ser en økning i myhc 2x. 
+
+Økningen i myhc 2x, som er forbundet med de raskeste og mest eksplosive muskelfibrene, er uventet. Denne fibertypen reduseres vanligvis ved langvarig trening til fordel for mer utholdenhets- eller styrkeorienterte fibre (type I og IIa) [@Pette2000]. Det kan være at denne økningen er et resultat av tekniske feil, som for eksempel høy primer-effektivitet eller biologisk variasjon.
+
+Primer effektiviteten er ikke optimal da den er kalkulert til 142%. Referanseverdiene som er på 90-110% indikerer at hver PCR syklus dobbler mengden mål-DNA. Vår høye verdi tyder på ulike feilkilder undervegs i forsøket som feil pipettering eller kontaminasjon, primere kan binde seg til flere plasser på DNA og primere kan binde seg til hverandre noe som kan gi falske resultat. 
+
+CV målingene forteller at det er høyere variabilitet i målingene når prøven blir mer fortynnet. Gjennomsnittet er lavest på den ufortynnede prøven noe som kan påvirke at CV er høyere enn den 1/2 fortynnede prøven da CV regnes ut fra standardavviket delt på gjennomsnittet som gjør at et lavere gjennomsnitt vil gi en høyere CV. Vi mistenker at dårlig pipettering er årsaken til en høyere CV for ufortynnet prøve enn 1/2 fortynnet prøve. 

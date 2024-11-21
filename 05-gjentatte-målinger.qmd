@@ -1,5 +1,4 @@
 ---
-output: html_document
 editor_options: 
   chunk_output_type: console
 crossref: 
@@ -163,7 +162,7 @@ lean.mass.results <- paste0(estimate,
                             cil,
                             ",",
                             ciu, 
-                            "], *P*-value = ",
+                            "], *P*-verdi = ",
                             pval,
                             ", t<sub>",
                             df, "</sub> = ",
@@ -286,7 +285,7 @@ str.results <- paste0(estimate2,
                             cil2,
                             ",",
                             ciu2, 
-                            "], *P*-value = ",
+                            "], *P*-verdi = ",
                             pval2,
                             ", t<sub>",
                             df2, "</sub> = ",
@@ -333,9 +332,9 @@ str_plot
 ## Diskusjon
 Denne studien viser at 3-sett med styrketrening på bein gir større økning i maksimal styrke og muskelmasse sammenlignet med 1-sett. Dette støtter min hypotese om at moderat volum gir større økning i maksimal styrke og muskelmasse enn lavt volum.
 
-Tidligere forskning har som nevnt vist seg å være sprikende i sine resultater. [@Cannon2010] og [@Mitchell2012] fant ingen forskjell mellom ett sett og tre sett når det gjaldt økning i styrke eller muskelmasse. Men i meta-analyser gjort av [@Krieger2009] og [@Schoenfeld2017] viser det seg at flere sett er bedre enn ett. Denne studien støtter meta-analysene og tilsier at et moderat treningsvolum kan være mer effektivt enn lavt volum for styrke og muskelvekst. Dette kan være til nytte for nybegynnere og folk som trener sporadisk styrketrening.
+Tidligere forskning har som nevnt vist seg å være sprikende i sine resultater. Det finnes flere studier [@Cannon2010],[@Mitchell2012] som ikke fant noen forskjell mellom ett sett og tre sett når det gjaldt økning i styrke eller muskelmasse. Men i meta-analyser gjort av [@Krieger2009] og [@Schoenfeld2017] viser det seg at flere sett er bedre enn ett. Denne studien støtter meta-analysene og tilsier at et moderat treningsvolum kan være mer effektivt enn lavt volum for styrke og muskelvekst. Dette kan være til nytte for nybegynnere og folk som trener sporadisk styrketrening.
 
-Denne studien sitt design skiller seg fra tidligere studier og styrker funnene. Ved å tildele begge styrketreningsprotokollene til samme individ reduseres individforskjellene [@Senn2002]. Dette betyr at man i større grad kan peke på effekten av treningsvolumet som begrunnelse for økning i styrke og muskelvekst og ikke personlige variabler som; personlig genetikk, kosthold eller treningsstatus. I tillegg ble 91% av øktene utført med oppfølging noe som reduserer risikoen for feil utførelse, og som gir lik kvalitet på treningen.
+Designet i denne studien skiller seg fra tidligere studier og styrker funnene som taler for et mer moderat volum. Ved å tildele begge styrketreningsprotokollene til samme individ reduseres individforskjellene [@Senn2002]. Dette betyr at man i større grad kan peke på effekten av treningsvolumet som begrunnelse for økning i styrke og muskelvekst og ikke personlige variabler som; personlig genetikk, kosthold eller treningsstatus. I tillegg ble 91% av øktene utført med oppfølging noe som reduserer risikoen for feil utførelse, og som gir lik kvalitet på treningen.
 
 Samlet sett støtter funnene i denne studien hypotesen om at et moderat treningsvolum  gir større økning i maksimal styrke og muskelmasse sammenlignet med et lavt volum. Dette kan ha praktisk betydning for å optimalisere treningsprogrammer, særlig for individer med lite erfaring i styrketrening. Likevel peker variasjonen i forskningsresultater på behovet for ytterligere forskning for å få klarhet i hvordan treningsvolum kan optimaliseres for ulike målgrupper og treningsmål.
 

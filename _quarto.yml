@@ -5,12 +5,17 @@ project:
     - "!devel/"
 book:
   title: "Mappeeksamen IDR4000"
-  author: "Ulrich"
+  author: "KANDIDATNR"
   date: "2024-11-05"
   chapters:
   - index.qmd
-  - 03-statistisk-inferens.qmd 
-  - 05-rapport.qmd
+  - 01-reliabilitet.qmd
+  - 02-predikere-data.qmd
+  - 03-statistiske-modeller.qmd 
+  - 04-studiedesign.qmd
+  - 05-gjentatte-målinger.qmd
+  - 06-filosofi.qmd
+  - 07-labrapport.qmd
   - kilder.qmd 
 bibliography: 
  - resources/references.bib
@@ -21,3 +26,6 @@ format:
     theme: cosmo 
   pdf: 
     documentclass: scrreprt
+crossref: 
+  fig-title: "Figur"
+  tbl-title: "Tabell"

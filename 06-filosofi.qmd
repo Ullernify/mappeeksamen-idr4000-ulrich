@@ -1,0 +1,37 @@
+---
+title: "Filosofi"
+
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+### Ifølge Hume er det umulig å rasjonelt begrunne bruken av induksjon. Hva er argumentet for denne konklusjonen? Gi en innvending mot ett av premissene i Humes argument og prøv å svare på denne innvendingen på Humes vegne. 
+
+David Hume mente at for å trekke slutninger basert på induktiv logikk må man ha uniformitetsprinsippet, at naturen vil fortsette å reagere i fremtiden slik den har gjort i fortiden, som premiss. Hume hevdet at for å rasjonelt kunne bevise naturens uniformitet må induksjon begrunnes med induksjon. Dette ville da bli et sirkulært argument.
+
+Ifølge Hume vil en sirkulær begrunnelse ikke være rasjonell da premisset for slutningen selv trenger begrunnelse. Derfor mener Hume at induksjon ikke kan begrunnes rasjonelt og at denne type konklusjoner ikke gir noe godt grunnlag for opphav til kunnskap. Han prøvde også å finne grunnlag for generalisering av kunnskap basert på tidligere erfaringer og observasjoner. Det klassiske eksempelet som tar for seg hvite svaner og om man kan si at alle svaner er hvite basert på tidligere observasjoner illustrer induksjonsproblemet. Her er argumenterer man med at siden alle tidligere observerte svaner er hvite, er alle svaner hvite. I dette tilfellet generaliseres antagelser basert på tidligere erfaringer, men det trengs bare å observere en svane med annen farge for å avkrefte generaliseringen. Dette viser at induksjon som grunnlag for sannhet ikke holder mål og alltid vil være knyttet til usikkerhet [@vassend2024].
+
+Kunnskap er basert på erfaringer og observasjoner med uniformitetsprinsippet til grunn. At Hume ikke anerkjenner logiske slutninger som rasjonelle med bakgrunn i naturens uniformitet gir ikke grunnlag nok til å forkaste eller legge mindre vekt på fornuftige antakelser basert på erfaring. Humes argument var ment filosofisk og teoretisk. Han mente selv at en i hverdagslivet skulle følge sine logiske slutninger basert på erfaring. Det vil for eksempel, basert på erfaring om at gjenstander tar fyr, ikke være fornuftig å kaste glør fra peisen i restavfall. Uniformitetsprinsippet ligger til grunn, men ikke med en sannhet om at det tar fyr, men en sannsynlighet. Restavfall inneholder gjenstander som har vist seg å brenne før, derfor antar man at det kan begynne å brenne i fremtiden. Man unngår altså å kaste glør fra peisen i restavfallet nettopp fordi man antar at det kan ende katastrofalt ved at huset brenner ned. Man kan ikke si det for sikkert, men man tar ikke sjansen basert på tidligere erfaringer. Det ville blitt kaos om verden ikke skulle legge uniformitetsprinsippet til grunn for å veilede oss i antagelser om fremtiden. Men det kan ikke rasjonelt begrunnes som en sannhet, slik Hume har foreslått.
+
+Å forsvare uniformsprinsippet med sannsynlighet og vitenskapelig suksess vil i følge Hume være å flytte problemet om induksjon, ikke løse det. Han mener at man ikke kan forsvare induksjon ved bruk av sannsynlighet. Dette fordi man for å sannsynliggjøre mønstre om fremtiden må anta at uniformitetsprinsippet ligger til grunn. Vitenskaplig suksess som har vist seg å forutsi og forklare fenomener rettferdiggjør heller ikke induksjon. Hume mener dette kan forklares ved å se på menneskets psykologi [@vassend2024]. 
+
+
+### Gi en kort beskrivelse av falsifikasjonisme og si litt om hvorfor Karl Popper var motivert til å utvikle denne teorien. Presenter så ett problem med teorien og vurder hvorvidt problemet kan løses.
+
+#### Karl Popper - falsifikasjonismen
+Popper var av den oppfatning at Humes induksjonsproblemet ikke var til å løses [@vassend2]. Popper mente induksjon var en fiasko og at vitenskapen ikke kunne verifisere noe som helst, bare falsifisere [Døderlein2007]. Han mente faktisk at bekreftelsen av hypoteser var et kjennetegn på pseudovitenskap! 
+
+Det kan tenkes at Karl Popper med sin uenighet i hva som ble sett på som vitenskap og sine tanker om induksjon, og i sin iver etter å skille vitenskapelige fra ikke-vitenskapelige utsagn, ble motivert til å utvikle sin teori om falsifikasjonisme. Popper, med utgangspunkt i sin teori om falsifiserbarhet, mente at ingen hypotese kan vise seg å være sann. En hypotese kan unnlates å bli forkastet, men ikke fordi den er sann eller  usann, men fordi den ikke er blitt falsifisert. Den er altså ikke blitt bevist usann. En hypotese som er falsifisert kan derimot ikke beholdes da denne er bevist usann. Falsifiseribarheten av teorier og utsagn kan også graderes avhengig av hvor presise de er, og hvor mange prediksjoner de inneholder. Teori 1: " vann koker alltid ved 100 grader celsius ved havnivå" er mer falsifiserbar enn teori 2: " vann koker ved 100 grader". Teori 1 har flere detaljer enn teori 2 som kan testes, noe som øker falsifiserbarheten i teori 1 versus teori 2 [@vassend2].
+
+
+Pierre Duhem sitt logiske poeng fremhever en utfordring med falsifikasjon. Poenget til Duhem er at vitenskaplige hypoteser sjelden blir testet isolert, eller uten støttehypoteser. Han mener at når et resultat ikke stemmer overens med prediksjonene, er det ikke nødvendigvis hypotesen som er problemet, men muligens andre variabler, eller observasjonen. Dette kan være variabler som underliggende antagelser om hypotesen, feil på måleinstument, eller til og med uppdagede variabler som påvirker resultatene. Dette betyr at en falsifisering ofte ikke entydig peker på hvilken del av eksperimentet som må forkastes [@vassend2]. Duhem poengterer dermed at vitenskaplige testing er mer komplisert og en del av et større nettverk av teorier, noe som utfordrer Poppers idè om at en enkelt hypotese kan falsifiseres isolert. For å forkaste en hypotese kan det derfor kreve grundige revurderinger av tilhørende teorier og hjelpemodeller, og ikke en enkel slutning om at hypotesen er usann.   
+
+Poppers falsifikasjonsteori sier at hvis en hypotese er falsifisert så er den usann. Den kan derfor ikke være sann. En utfordring med denne teorien er at man for å hevde at noe er usant også må si at noe er sant. Det krever altså bekreftelse for å falsifisere. Dette blir vel en form for induktiv logikk med premiss om uniformitet. Man regner med at denne usanne hypotesen vil fortsette å være usann i fremtiden. Så da er kanskje ikke premisset om uniformitet så dumt likevel. Naturens lover viser seg å være konsekvente nok. Resultater som kommer fra teknologisk fremgang de siste x-antall årene vitner om nettopp gode nok metoder.
+
+
+
+
+
+
