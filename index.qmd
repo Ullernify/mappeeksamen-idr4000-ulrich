@@ -2,7 +2,7 @@
 
 For å etterprøve mine funn kan all kode og data hentes her: 
 
-
+https://github.com/Ullernify/mappeeksamen-idr4000-ulrich.git
 
 
 
